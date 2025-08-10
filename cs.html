@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service - Growtopia Shop</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/cs.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="page-title" data-en="Customer Service" data-id="Layanan Pelanggan">Customer Service</h1>
+            <div class="back-btn-container">
+                <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+                    <span data-en="← Back" data-id="← Kembali">← Back</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="ai-info">
+                        <div class="ai-avatar">🤖</div>
+                        <div class="ai-details">
+                            <h3 data-en="AI Assistant" data-id="Asisten AI">AI Assistant</h3>
+                            <span class="status online" data-en="Online" data-id="Online">Online</span>
+                        </div>
+                    </div>
+                    <button class="clear-chat-btn" id="clearChatBtn">
+                        <span data-en="Clear Chat" data-id="Hapus Chat">Clear Chat</span>
+                    </button>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <div class="message-text" data-en="Hello! I'm your AI assistant. How can I help you with your Growtopia Shop needs today?" data-id="Halo! Saya asisten AI Anda. Bagaimana saya bisa membantu Anda dengan kebutuhan Growtopia Shop hari ini?">
+                                Hello! I'm your AI assistant. How can I help you with your Growtopia Shop needs today?
+                            </div>
+                            <div class="message-time" id="initialMessageTime"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="chat-input-wrapper">
+                        <input type="text" id="chatInput" class="chat-input" 
+                               data-en-placeholder="Type your message..." 
+                               data-id-placeholder="Ketik pesan Anda..."
+                               placeholder="Type your message...">
+                        <button class="send-btn" id="sendBtn">
+                            <span class="send-icon">📤</span>
+                        </button>
+                    </div>
+                    <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                        <div class="typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span data-en="AI is typing..." data-id="AI sedang mengetik...">AI is typing...</span>
+                    </div>
+                </div>
+
+                <div class="quick-questions">
+                    <h4 data-en="Quick Questions:" data-id="Pertanyaan Cepat:">Quick Questions:</h4>
+                    <div class="quick-question-buttons">
+                        <button class="quick-question-btn" data-question="What are your prices?" data-question-id="Berapa harga Anda?">
+                            <span data-en="What are your prices?" data-id="Berapa harga Anda?">What are your prices?</span>
+                        </button>
+                        <button class="quick-question-btn" data-question="How do I make a payment?" data-question-id="Bagaimana cara melakukan pembayaran?">
+                            <span data-en="How do I make a payment?" data-id="Bagaimana cara melakukan pembayaran?">How do I make a payment?</span>
+                        </button>
+                        <button class="quick-question-btn" data-question="Where is my order?" data-question-id="Di mana pesanan saya?">
+                            <span data-en="Where is my order?" data-id="Di mana pesanan saya?">Where is my order?</span>
+                        </button>
+                        <button class="quick-question-btn" data-question="What payment methods do you accept?" data-question-id="Metode pembayaran apa yang Anda terima?">
+                            <span data-en="What payment methods do you accept?" data-id="Metode pembayaran apa yang Anda terima?">What payment methods do you accept?</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/ai-cs.js"></script>
+    <script type="module" src="js/cs.js"></script>
+    <script type="module" src="js/language.js"></script>
+    <script type="module" src="js/theme.js"></script>
+</body>
+</html>

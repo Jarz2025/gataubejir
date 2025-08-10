@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Growtopia Shop</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1 data-en="Login" data-id="Masuk">Login</h1>
+                <p data-en="Welcome back to Growtopia Shop" data-id="Selamat datang kembali di Growtopia Shop">Welcome back to Growtopia Shop</p>
+            </div>
+            
+            <form class="auth-form" id="loginForm">
+                <div class="form-group">
+                    <label for="email" data-en="Email" data-id="Email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" data-en="Password" data-id="Kata Sandi">Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" required>
+                        <button type="button" class="password-toggle" id="passwordToggle">
+                            <span class="eye-icon">👁️</span>
+                        </button>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full" id="loginBtn">
+                    <span data-en="Login" data-id="Masuk">Login</span>
+                </button>
+                
+                <div class="auth-links">
+                    <a href="register.html" data-en="Don't have an account? Register" data-id="Belum punya akun? Daftar">Don't have an account? Register</a>
+                    <a href="index.html" data-en="Back to Home" data-id="Kembali ke Beranda">Back to Home</a>
+                </div>
+            </form>
+            
+            <div class="loading" id="loadingSpinner" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+        </div>
+        
+        <div class="theme-language-controls">
+            <button class="control-btn" id="themeToggle">
+                <span class="theme-icon">🌓</span>
+            </button>
+            <button class="control-btn" id="languageToggle">
+                <span class="language-icon">🌐</span>
+                <span class="language-text">EN</span>
+            </button>
+        </div>
+    </div>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/login.js"></script>
+    <script type="module" src="js/language.js"></script>
+    <script type="module" src="js/theme.js"></script>
+</body>
+</html>

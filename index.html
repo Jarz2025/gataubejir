@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growtopia Shop</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="website-name" id="websiteName">Growtopia Shop</h1>
+            <div class="user-info" id="userInfo" style="display: none;">
+                <span class="username" id="displayUsername"></span>
+                <button class="btn btn-secondary" id="logoutBtn">Logout</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="hero-section">
+                <h2 class="hero-title" data-en="Welcome to Growtopia Shop" data-id="Selamat Datang di Growtopia Shop">Welcome to Growtopia Shop</h2>
+                <p class="hero-subtitle" data-en="Choose your service below" data-id="Pilih layanan Anda di bawah">Choose your service below</p>
+                
+                <div class="service-buttons">
+                    <button class="service-btn rgt-btn" id="rgtBtn">
+                        <div class="service-icon">💎</div>
+                        <h3 data-en="RGT Service" data-id="Layanan RGT">RGT Service</h3>
+                        <p data-en="Diamond Lock & Blue Gem Lock" data-id="Diamond Lock & Blue Gem Lock">Diamond Lock & Blue Gem Lock</p>
+                    </button>
+                    
+                    <button class="service-btn rps-btn" id="rpsBtn">
+                        <div class="service-icon">🎁</div>
+                        <h3 data-en="RPS Service" data-id="Layanan RPS">RPS Service</h3>
+                        <p data-en="Custom Item Purchase" data-id="Pembelian Item Khusus">Custom Item Purchase</p>
+                    </button>
+                </div>
+                
+                <div class="additional-services">
+                    <button class="btn btn-outline" id="csBtn">
+                        <span data-en="Customer Service" data-id="Layanan Pelanggan">Customer Service</span>
+                    </button>
+                    <button class="btn btn-outline" id="historyBtn">
+                        <span data-en="Purchase History" data-id="Riwayat Pembelian">Purchase History</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-controls">
+                <div class="theme-control">
+                    <button class="control-btn" id="themeToggle">
+                        <span class="theme-icon">🌓</span>
+                        <span class="theme-text" data-en="Theme" data-id="Tema">Theme</span>
+                    </button>
+                </div>
+                
+                <div class="language-control">
+                    <button class="control-btn" id="languageToggle">
+                        <span class="language-icon">🌐</span>
+                        <span class="language-text">EN</span>
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-en="Login Required" data-id="Login Diperlukan">Login Required</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p data-en="Please login to continue" data-id="Silakan login untuk melanjutkan">Please login to continue</p>
+                <div class="modal-actions">
+                    <button class="btn btn-primary" id="goToLogin">
+                        <span data-en="Login" data-id="Masuk">Login</span>
+                    </button>
+                    <button class="btn btn-secondary" id="goToRegister">
+                        <span data-en="Register" data-id="Daftar">Register</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/language.js"></script>
+    <script type="module" src="js/theme.js"></script>
+</body>
+</html>

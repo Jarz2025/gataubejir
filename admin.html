@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Growtopia Shop</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-sidebar">
+            <div class="admin-header">
+                <h2>Admin Panel</h2>
+                <div class="admin-user" id="adminUser"></div>
+            </div>
+            <nav class="admin-nav">
+                <button class="nav-item active" data-section="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span data-en="Settings" data-id="Pengaturan">Settings</span>
+                </button>
+                <button class="nav-item" data-section="orders">
+                    <span class="nav-icon">📋</span>
+                    <span data-en="Orders" data-id="Pesanan">Orders</span>
+                    <span class="badge" id="pendingOrdersBadge">0</span>
+                </button>
+                <button class="nav-item" data-section="prices">
+                    <span class="nav-icon">💰</span>
+                    <span data-en="Pricing" data-id="Harga">Pricing</span>
+                </button>
+                <button class="nav-item" data-section="payments">
+                    <span class="nav-icon">💳</span>
+                    <span data-en="Payment Methods" data-id="Metode Pembayaran">Payment Methods</span>
+                </button>
+                <button class="nav-item" data-section="items">
+                    <span class="nav-icon">🎁</span>
+                    <span data-en="RPS Items" data-id="Item RPS">RPS Items</span>
+                </button>
+            </nav>
+            <div class="admin-footer">
+                <button class="btn btn-secondary btn-full" onclick="window.location.href='index.html'">
+                    <span data-en="Back to Site" data-id="Kembali ke Situs">Back to Site</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="admin-content">
+            <!-- Settings Section -->
+            <div class="admin-section active" id="settings">
+                <div class="section-header">
+                    <h3 data-en="Website Settings" data-id="Pengaturan Website">Website Settings</h3>
+                    <button class="btn btn-primary" id="saveSettings">
+                        <span data-en="Save Changes" data-id="Simpan Perubahan">Save Changes</span>
+                    </button>
+                </div>
+                <div class="settings-grid">
+                    <div class="setting-card">
+                        <h4 data-en="Website Name" data-id="Nama Website">Website Name</h4>
+                        <input type="text" id="websiteName" value="Growtopia Shop">
+                    </div>
+                    <div class="setting-card">
+                        <h4 data-en="Telegram Bot Token" data-id="Token Bot Telegram">Telegram Bot Token</h4>
+                        <input type="text" id="telegramBotToken" placeholder="Your bot token">
+                    </div>
+                    <div class="setting-card">
+                        <h4 data-en="Telegram Chat ID" data-id="ID Chat Telegram">Telegram Chat ID</h4>
+                        <input type="text" id="telegramChatId" placeholder="Your chat ID">
+                    </div>
+                    <div class="setting-card">
+                        <h4 data-en="Admin Password" data-id="Kata Sandi Admin">Admin Password</h4>
+                        <input type="password" id="adminPassword" placeholder="Set admin password">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Section -->
+            <div class="admin-section" id="orders">
+                <div class="section-header">
+                    <h3 data-en="Order Management" data-id="Manajemen Pesanan">Order Management</h3>
+                    <div class="order-filters">
+                        <select id="orderFilter">
+                            <option value="all" data-en="All Orders" data-id="Semua Pesanan">All Orders</option>
+                            <option value="pending" data-en="Pending" data-id="Menunggu">Pending</option>
+                            <option value="processed" data-en="Processed" data-id="Diproses">Processed</option>
+                            <option value="rejected" data-en="Rejected" data-id="Ditolak">Rejected</option>
+                        </select>
+                        <button class="btn btn-secondary" id="refreshOrders">
+                            <span data-en="Refresh" data-id="Refresh">🔄</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="orders-container" id="ordersContainer">
+                    <!-- Orders will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Pricing Section -->
+            <div class="admin-section" id="prices">
+                <div class="section-header">
+                    <h3 data-en="Pricing Configuration" data-id="Konfigurasi Harga">Pricing Configuration</h3>
+                    <button class="btn btn-primary" id="savePrices">
+                        <span data-en="Save Prices" data-id="Simpan Harga">Save Prices</span>
+                    </button>
+                </div>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <h4 data-en="RGT Pricing" data-id="Harga RGT">RGT Pricing</h4>
+                        <div class="price-inputs">
+                            <div class="price-input">
+                                <label data-en="Diamond Lock (DL)" data-id="Diamond Lock (DL)">Diamond Lock (DL)</label>
+                                <input type="number" id="dlPrice" placeholder="0">
+                                <span>Rupiah</span>
+                            </div>
+                            <div class="price-input">
+                                <label data-en="Blue Gem Lock (BGL)" data-id="Blue Gem Lock (BGL)">Blue Gem Lock (BGL)</label>
+                                <input type="number" id="bglPrice" placeholder="0">
+                                <span>Rupiah</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price-card">
+                        <h4 data-en="RPS Pricing" data-id="Harga RPS">RPS Pricing</h4>
+                        <div class="price-inputs">
+                            <div class="price-input">
+                                <label data-en="BGL Payment" data-id="Pembayaran BGL">BGL Payment</label>
+                                <input type="number" id="rpsBglPrice" placeholder="0">
+                                <span>BGL</span>
+                            </div>
+                            <div class="price-input">
+                                <label data-en="Clock Payment" data-id="Pembayaran Clock">Clock Payment</label>
+                                <input type="number" id="rpsClockPrice" placeholder="0">
+                                <span>Clock</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Methods Section -->
+            <div class="admin-section" id="payments">
+                <div class="section-header">
+                    <h3 data-en="Payment Methods" data-id="Metode Pembayaran">Payment Methods</h3>
+                    <button class="btn btn-primary" id="savePayments">
+                        <span data-en="Save Payment Info" data-id="Simpan Info Pembayaran">Save Payment Info</span>
+                    </button>
+                </div>
+                <div class="payment-methods-grid">
+                    <div class="payment-card">
+                        <h4>DANA</h4>
+                        <input type="text" id="danaNumber" placeholder="08xxxxxxxxxx">
+                        <input type="text" id="danaName" placeholder="Account Name">
+                    </div>
+                    <div class="payment-card">
+                        <h4>GoPay</h4>
+                        <input type="text" id="gopayNumber" placeholder="08xxxxxxxxxx">
+                        <input type="text" id="gopayName" placeholder="Account Name">
+                    </div>
+                    <div class="payment-card">
+                        <h4>OVO</h4>
+                        <input type="text" id="ovoNumber" placeholder="08xxxxxxxxxx">
+                        <input type="text" id="ovoName" placeholder="Account Name">
+                    </div>
+                    <div class="payment-card">
+                        <h4>ShopeePay</h4>
+                        <input type="text" id="shopeeNumber" placeholder="08xxxxxxxxxx">
+                        <input type="text" id="shopeeName" placeholder="Account Name">
+                    </div>
+                    <div class="payment-card">
+                        <h4 data-en="Bank Transfer" data-id="Transfer Bank">Bank Transfer</h4>
+                        <input type="text" id="bankNumber" placeholder="Account Number">
+                        <input type="text" id="bankName" placeholder="Account Name">
+                        <input type="text" id="bankType" placeholder="Bank Name (e.g., BCA, Mandiri)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- RPS Items Section -->
+            <div class="admin-section" id="items">
+                <div class="section-header">
+                    <h3 data-en="RPS Items Configuration" data-id="Konfigurasi Item RPS">RPS Items Configuration</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary" id="addItem">
+                            <span data-en="Add Item" data-id="Tambah Item">+ Add Item</span>
+                        </button>
+                        <button class="btn btn-primary" id="saveItems">
+                            <span data-en="Save Items" data-id="Simpan Item">Save Items</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="items-container" id="itemsContainer">
+                    <!-- Items will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="modal" id="orderModal" style="display: none;">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 data-en="Order Details" data-id="Detail Pesanan">Order Details</h3>
+                <button class="modal-close" id="closeOrderModal">&times;</button>
+            </div>
+            <div class="modal-body" id="orderDetails">
+                <!-- Order details will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/admin.js"></script>
+    <script type="module" src="js/language.js"></script>
+    <script type="module" src="js/theme.js"></script>
+</body>
+</html>

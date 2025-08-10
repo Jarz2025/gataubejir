@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase History - Growtopia Shop</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/history.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="page-title" data-en="Purchase History" data-id="Riwayat Pembelian">Purchase History</h1>
+            <div class="back-btn-container">
+                <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+                    <span data-en="← Back" data-id="← Kembali">← Back</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="history-container">
+                <div class="history-filters">
+                    <select id="statusFilter">
+                        <option value="all" data-en="All Status" data-id="Semua Status">All Status</option>
+                        <option value="pending" data-en="Pending" data-id="Menunggu">Pending</option>
+                        <option value="processed" data-en="Processed" data-id="Diproses">Processed</option>
+                        <option value="rejected" data-en="Rejected" data-id="Ditolak">Rejected</option>
+                    </select>
+                    <select id="serviceFilter">
+                        <option value="all" data-en="All Services" data-id="Semua Layanan">All Services</option>
+                        <option value="RGT" data-en="RGT Service" data-id="Layanan RGT">RGT Service</option>
+                        <option value="RPS" data-en="RPS Service" data-id="Layanan RPS">RPS Service</option>
+                    </select>
+                </div>
+
+                <div class="orders-list" id="ordersList">
+                    <!-- Orders will be loaded dynamically -->
+                </div>
+
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <div class="empty-icon">📝</div>
+                    <h3 data-en="No Orders Found" data-id="Tidak Ada Pesanan">No Orders Found</h3>
+                    <p data-en="You haven't made any purchases yet." data-id="Anda belum melakukan pembelian apapun.">You haven't made any purchases yet.</p>
+                    <button class="btn btn-primary" onclick="window.location.href='index.html'">
+                        <span data-en="Start Shopping" data-id="Mulai Belanja">Start Shopping</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="modal" id="orderModal" style="display: none;">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 data-en="Order Details" data-id="Detail Pesanan">Order Details</h3>
+                <button class="modal-close" id="closeOrderModal">&times;</button>
+            </div>
+            <div class="modal-body" id="orderDetails">
+                <!-- Order details will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/history.js"></script>
+    <script type="module" src="js/language.js"></script>
+    <script type="module" src="js/theme.js"></script>
+</body>
+</html>
